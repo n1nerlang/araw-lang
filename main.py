@@ -1,4 +1,5 @@
-# ARAW LANGUAGE - THE CHAOTIC BUILD
+# Araw Language
+# Build: Araw 1.5
 # If this code breaks, it's not a bug, it's a "feature implementation delay."
 # Inspired by Lua, but fueled by way too much caffeine and existential crisis.
 
@@ -6,6 +7,7 @@ class ArawInterpreter:
     def __init__(self):
         # A dictionary to hold our variables. 
         # It's basically a junk drawer for data.
+        # Variables are junk. Data Isn't
         self.variables = {}
 
     def parse_value(self, token):
@@ -25,7 +27,9 @@ class ArawInterpreter:
                 continue
             
             # Assignment: let name = value
-            if line.startswith("let "):
+            # was what we did before, so 1.5 uses
+            # lvar name = value or funcs use lfunc name() or name(text, nightmareinducingslop)
+            if line.startswith("lvar "):
                 parts = line.replace("let ", "").split(" = ", 1)
                 if len(parts) == 2:
                     var_name = parts[0].strip()
@@ -46,8 +50,8 @@ class ArawInterpreter:
 if __name__ == "__main__":
     araw_code = """
     -- Defining our local variables
-    let version = "0.0.1"
-    let status = "Experimental Chaos"
+    lvar version = "1.5"
+    lvar status = "1.5 is 1.5 duh"
     
     -- Emitting data
     emit("--- Starting Araw Engine ---")
